@@ -11,25 +11,26 @@ def main():
   now = datetime.datetime.now() 
   currenthour = (now.hour - 6) % 12
   currentminute = now.minute
-
   print (currenthour, currentminute) #this is just for checking, we should delete it later
 
   #TODO:
   #Ask user for hours 
   hours = input("enter hours: ")
   hours = int(hours) #change from the test to hour
-  minutes = input ("enter minutes")
-  minutes = int(minutes)
-  futurehour = (currenthour + hours) % 12
-  futureminutes = (currentminute + minutes) % 60
+  minutes = input ("enter minutes: ")
+  minutes = int(minutes) 
+  futureminutes = (currentminute + minutes) 
+  extrahours = (futureminutes // 60)
+  futureminutes = futureminutes % 60
+  futurehour = currenthour + hours + extrahours
+  futurehour = futurehour % 12
   strhour = str(futurehour)
   strmin = str(futureminutes)
   if futureminutes < 10: 
     strmin = "0" + strmin #add a leading zero to one digit min
-  extrahours = ( futureminutes // 60) % 12
-  futurehour = (extrahours + futurehour) 
-  print(futureminutes)
-  print(futurehour)
+
+  print(futurehour ,":", futureminutes)
+
   
   #Ask user for minutes
 
